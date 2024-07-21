@@ -1,8 +1,13 @@
 import React from 'react';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
+
+const trimLabel = (label) => {
+  // Trim the label to a maximum length of 10 characters
+  return label.length > 10 ? `${label.substring(0, 10)}...` : label;
+};
 
 const GraphSection = ({ selectedWarning, currentStock }) => {
-  if (!selectedWarning) return <p>Select a warning to view graphs</p>;
+  if (!selectedWarning) return <p>Select a warning to view Resource Estimation</p>;
 
   if (!currentStock || Object.keys(currentStock).length === 0) {
     return <p>Loading data, please wait...</p>;
@@ -28,20 +33,27 @@ const GraphSection = ({ selectedWarning, currentStock }) => {
 
   return (
     <div className="graph-section" style={{ paddingRight: '20px' }}>
-      <h2>{selectedWarning.headline} - Resource Comparison</h2>
+      <h2>{selectedWarning.headline} - Resource Estimation</h2>
       {categories.map((category, index) => {
         const data = currentStock[category] || [];
         
         return (
-          <div key={category} className="category-chart">
+          <div key={category} className="category-chart" style={{ marginBottom: '20px' }}>
             <h3>{category}</h3>
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={350}>
               <BarChart data={data}>
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="resourceName" />
-                <YAxis />
+                <XAxis 
+                  dataKey="resourceName" 
+                  angle={-45} 
+                  textAnchor="end" 
+                  interval={0} 
+                  height={100} 
+                  tickFormatter={trimLabel} // Use the trimLabel function
+                  label={{ value: 'Resources', position: 'insideBottom', offset: -3 }}
+                />
+                <YAxis label={{ value: 'Quantity', angle: -90, position: 'insideLeft' }} />
                 <Tooltip />
-                <Legend />
                 <Bar 
                   dataKey="estimatedStock" 
                   fill={colors[index % colors.length]} 

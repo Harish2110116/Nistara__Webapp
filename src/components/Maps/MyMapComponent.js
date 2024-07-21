@@ -59,13 +59,13 @@ const WarningsAlertsScreen = () => {
         
         try {
           const input_data = {
-            severity: selectedAlert.severity,
+            severity: selectedAlert.severity || 'likely', // Default severity level
             identifier: selectedAlert.identifier,
             effective_start_time: selectedAlert.effective_start_time,
             effective_end_time: selectedAlert.effective_end_time,
-            disaster_type: selectedAlert.disaster_type,
+            disaster_type: selectedAlert.disaster_type === 'flood' ? 'flood' : 'flood', // Default to flood if not specified
             area_description: selectedAlert.area_description,
-            severity_level: selectedAlert.severity_level,
+            severity_level: selectedAlert.severity_level || 'likely', // Default severity level
             type: selectedAlert.type,
             actual_lang: selectedAlert.actual_lang,
             warning_message: selectedAlert.warning_message,
@@ -79,7 +79,7 @@ const WarningsAlertsScreen = () => {
           };
   
           console.log('Sending request for current stock data...'); // Log request
-          const response = await axios.post('https://a96d-35-231-139-105.ngrok-free.app/predict', input_data); // Use ngrok URL
+          const response = await axios.post('https://1dc1-35-229-219-134.ngrok-free.app/predict', input_data); // Use ngrok URL
           setCurrentStock(response.data);
           setLoading(false); // Stop loading
         } catch (error) {
