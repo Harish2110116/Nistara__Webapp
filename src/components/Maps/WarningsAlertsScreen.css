@@ -1,0 +1,86 @@
+.map-container {
+  height: 600px; /* Adjust height as needed */
+  width: 100%;
+  font-size: 16px;
+}
+
+.alert-details {
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.alert-details h2 {
+  color: #333;
+  font-size: 16px;
+}
+
+.alert-details p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.alert-details p strong {
+  color: #000;
+}
+
+/* Infobox styling */
+.infobox-content {
+  color: #333;
+  font-size: 14px;
+  width: 300px;  /* Adjust width as needed */
+  height: auto; 
+}
+
+.infobox-content h2 {
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+
+.infobox-content p {
+  margin: 5px 0;
+  color: #555;
+  font-size: 12px;
+}
+
+.infobox-content p strong {
+  color: #000;
+  font-size: 12px;
+}
+/* Container for the map and graph section */
+.map-container {
+  display: flex;
+  height: 100vh; /* Full viewport height */
+  overflow: hidden; /* Hide overflow on this container */
+}
+
+/* Map container */
+.map-container > .react-bingmaps-container {
+  flex: 1; /* Take up remaining space */
+  overflow: hidden; /* Ensure no overflow within the map container */
+}
+
+/* Graph section container */
+.graph-section-container {
+  flex: 1; /* Take up remaining space */
+  height: 100%;
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding: 20px; /* Add padding for better view */
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+
+/* Optional: Customize the scrollbar appearance */
+.graph-section-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.graph-section-container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.graph-section-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

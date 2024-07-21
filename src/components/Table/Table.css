@@ -25,7 +25,8 @@ th {
 
 @media screen and (max-width: 1200px) {
   .Table {
-    width: 170%;
+    width: 90%;
+    height:90%;
     margin-top: 2rem;
   }
 }
@@ -37,6 +38,6 @@ th {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 23rem;
+    width: 90%;
   }
 }

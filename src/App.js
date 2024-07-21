@@ -15,6 +15,7 @@ import ResourceCards from './components/Analytics/ResourceCards';
 import BasicTable from './components/Analytics/AnalyticsTable';
 import FundTransactionsTable from './components/Analytics/FundTransactionsTable';
 import MapComponent from './components/Maps/MapComponent'; // Import the new MapComponent
+import MyMapComponent from './components/Maps/MyMapComponent';
 import { CurrentStock,resourcesData } from './Data/Data';
 const earlyWarningData = [
   { 
@@ -175,17 +176,26 @@ function App() {
           <div className="AppGlass">
             <Sidebar onMenuClick={handleMenuClick} />
             {selectedMenuItem === 0 && (
-              <>
+              <div style={{ display: 'flex', width: '100%' }}>
+              <div style={{ width: '70%', padding: '1rem' }}>
                 <MainDash />
+              </div>
+              <div style={{ width: '30%', padding: '1rem' }}>
                 <RightSide />
-              </>
+              </div>
+            </div>
             )}
             {selectedMenuItem === 1 && (
-              <>
-                <OrdersMainDash orders={orders} />
-                <OrdersRightSide orders={orders} />
-              </>
-            )}
+  <div style={{ display: 'flex', width: '100%' }}>
+    <div style={{ width: '60%', padding: '1rem' }}>
+      <OrdersMainDash orders={orders} />
+    </div>
+    <div style={{ width: '30%', padding: '1rem', paddingRight: '2rem', paddingBottom: '2rem' }}>
+      <OrdersRightSide orders={orders} />
+    </div>
+  </div>
+)}
+
             {selectedMenuItem === 2 && (
               <>
                 <div style={{ display: 'flex', width: '100%' }}>
@@ -201,28 +211,29 @@ function App() {
                     )}
                   </div>
                 </div>
-                <MapComponent />
+                {/* <MapComponent /> */}
               </>
             )}
             {selectedMenuItem === 3 && (
-              <>
-                <div style={{ display: 'flex', width: '100%' }}>
-                  <div style={{ width: '50%' }}>
-                    <ResourceCards onCardClick={handleCardClick} />
-                  </div>
-                  <div style={{ width: '50%', padding: '1rem' }}>
-                    {selectedCategory && renderTableForCategory(selectedCategory)}
-                  </div>
-                </div>
-                <div  style={{ display: 'flex', width: '100%' ,padding:'0.5rem'}}>
+              <div style={{ display: 'flex', width: '100%' }}>
+              <div style={{ width: '30%', padding: '1rem' }}>
+                <ResourceCards onCardClick={handleCardClick} />
+              </div>
+              <div style={{ width: '30%', padding: '1rem' }}>
+                {selectedCategory && renderTableForCategory(selectedCategory)}
+              </div>
+              <div style={{ width: '30%', padding: '1rem' }}>
                 <FundTransactionsTable transactions={fundTransactions} />
-                </div>
-                
-              </>
+              </div>
+            </div>
+             
             )}
             {selectedMenuItem === 4 && (
               <>
-                <MapComponent /> {/* Render the MapComponent */}
+              
+                {/* <MapComponent /> Render the MapComponent */}
+                <MyMapComponent/>
+                
               </>
             )}
             {selectedMenuItem === 5 && (
