@@ -198,7 +198,7 @@ function App() {
 
             {selectedMenuItem === 2 && (
               <>
-                <div style={{ display: 'flex', width: '100%' }}>
+                {/* <div style={{ display: 'flex', width: '100%' }}>
                   <EarlyWarningsMainDash 
                     earlyWarningData={earlyWarningData} 
                     setSelectedWarning={setSelectedWarning} 
@@ -210,8 +210,9 @@ function App() {
                       </div>
                     )}
                   </div>
-                </div>
+                </div> */}
                 {/* <MapComponent /> */}
+                <MyMapComponent/>
               </>
             )}
             {selectedMenuItem === 3 && (
@@ -232,7 +233,7 @@ function App() {
               <>
               
                 {/* <MapComponent /> Render the MapComponent */}
-                <MyMapComponent/>
+                {/* <MyMapComponent/> */}
                 
               </>
             )}

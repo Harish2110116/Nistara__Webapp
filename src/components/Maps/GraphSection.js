@@ -31,13 +31,22 @@ const GraphSection = ({ selectedWarning, currentStock }) => {
     '#6a4f9b'  // Blue
   ];
 
+  // Calculate the estimated population
+  const estimatedPopulation = selectedWarning.area_covered ? selectedWarning.area_covered * 1000 : 'N/A';
+
   return (
     <div className="graph-section" style={{ paddingRight: '20px' }}>
       <h2>{selectedWarning.headline} - Resource Estimation</h2>
+      {/* Display area covered and estimated population */}
+      <div className="area-population-details">
+        <p><strong>Area Covered:</strong> {selectedWarning.area_covered ? `${selectedWarning.area_covered} sq.km` : 'N/A'}</p>
+        <p><strong>Estimated Population:</strong> {estimatedPopulation}</p>
+      </div>
       {categories.map((category, index) => {
         const data = currentStock[category] || [];
         
         return (
+            
           <div key={category} className="category-chart" style={{ marginBottom: '20px' }}>
             <h3>{category}</h3>
             <ResponsiveContainer width="100%" height={350}>
@@ -64,6 +73,7 @@ const GraphSection = ({ selectedWarning, currentStock }) => {
           </div>
         );
       })}
+      
     </div>
   );
 };

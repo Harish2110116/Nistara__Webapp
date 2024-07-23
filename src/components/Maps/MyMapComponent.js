@@ -79,7 +79,7 @@ const WarningsAlertsScreen = () => {
           };
   
           console.log('Sending request for current stock data...'); // Log request
-          const response = await axios.post('https://1dc1-35-229-219-134.ngrok-free.app/predict', input_data); // Use ngrok URL
+          const response = await axios.post('https://6c3f-34-168-116-149.ngrok-free.app/predict', input_data); // Use ngrok URL
           setCurrentStock(response.data);
           setLoading(false); // Stop loading
         } catch (error) {
